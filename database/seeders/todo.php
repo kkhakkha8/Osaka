@@ -15,13 +15,13 @@ class todo extends Seeder
      */
     public function run()
     {
-        DB::table('todo')->insert([
-            'username' => Str::random(10),
-            'age'=>random_int(18,30),
-            'task'=>Str::random(30),
-            'complete'=>mt_rand(0,1)
+        // DB::table('todo')->insert([
+        //     'username' => Str::random(10),
+        //     'age'=>random_int(18,30),
+        //     'task'=>Str::random(30),
+        //     'complete'=>mt_rand(0,1)
             
             
-        ]);
+        // ]);
     }
 }
