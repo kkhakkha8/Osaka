@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\homeController;
+use App\Http\Controllers\homeResourceController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,7 +19,8 @@ Route::get('/welcome', function () {
     return view('welcome');
 });
 
-Route::get('/',[homeController::class,'home']);
+// Route::get('/',[homeController::class,'home']);
+Route::resource('/home',homeResourceController::class);
 // Route::get('/',function(){
 //     $personalDatas = [
 //         'p1'=>[
