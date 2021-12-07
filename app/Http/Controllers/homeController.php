@@ -8,8 +8,10 @@ use Illuminate\Http\Request;
 class homeController extends Controller
 {
     public function home(){
-        $todoDatas = Todo::all();
-        return view('home',compact('todoDatas'));
+        // $todoDatas = Todo::all();
+        // return view('home',compact('todoDatas'));
+        
+        return view('welcome');
     }
     
 }

@@ -15,11 +15,11 @@ use App\Http\Controllers\homeResourceController;
 |
 */
 
-Route::get('/welcome', function () {
-    return view('welcome');
-});
+// Route::get('/welcome', function () {
+//     return view('welcome');
+// });
 
-// Route::get('/',[homeController::class,'home']);
+Route::get('/welcome',[homeResourceController::class,'home'])->name('/');
 Route::resource('/home',homeResourceController::class);
 // Route::get('/',function(){
 //     $personalDatas = [

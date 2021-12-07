@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 
 class homeResourceController extends Controller
 {
+
     /**
      * Display a listing of the resource.
      *
@@ -15,7 +16,12 @@ class homeResourceController extends Controller
     public function index()
     {
         //
-        $todoDatas = Todo::all();
+        //$todoDatas = Todo::all();
+        $todoDatas = Todo::orderBy('id','desc')->get();
+        // $todoDatas = Todo::groupBy('id')
+        //         ->having('id', '<', 22)
+        //         ->get();
+               
         return view('home',compact('todoDatas'));
     }
 
@@ -57,9 +63,10 @@ class homeResourceController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Todo $home)
     {
-        $post = Todo::findOrFail($id);
+        //$post = Todo::findOrFail($id);
+        $post = $home;
         return view('show',compact('post'));
 
     }
@@ -70,9 +77,10 @@ class homeResourceController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Todo $home)
     {
-        $post = Todo::findOrFail($id);
+        //$post = Todo::findOrFail($id);
+        $post = $home;
         return view('edit',compact('post'));
     }
 
@@ -83,9 +91,10 @@ class homeResourceController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Todo $home)
     {
-        $post = Todo::findOrFail($id);
+        //$post = Todo::findOrFail($id);
+        $post = $home;
         $post->username = request('username');
         $post->age  = request('age');
         $post->task = request('task');
@@ -101,9 +110,10 @@ class homeResourceController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Todo $home)
     {
-        Todo::findOrFail($id)->delete();
+        $home->delete();
+        //Todo::findOrFail($id)->delete();
        
         
         return redirect('/home');
